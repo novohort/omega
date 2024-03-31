@@ -14,9 +14,10 @@ function codegen(node) {
     case "StringLiteral":
       return node.value;
     case "VariableDeclaration":
+      const mutabilityPrefix = node.isMutable ? "mut " : "";
       const rustType = node.datatype === "int" ? "i32" : "u32";
       const valueCode = codegen({type: "Literal", value: node.value});
-      return `let mut ${node.name}: ${rustType} = ${valueCode};`;
+      return `let ${mutabilityPrefix}${node.name}: ${rustType} = ${valueCode};`;
     case "Literal":
       return node.value;
     default:

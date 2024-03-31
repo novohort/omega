@@ -65,11 +65,11 @@ function parse(tokens) {
       };
     }
 
-    if (token.type === "keyword" && token.value === "let") {
+    if (token.type === "keyword" && (token.value === "let" || token.value === "const")) {
       current++;
       const nameToken = tokens[current++];
       if (nameToken.type !== "identifier") {
-        throw new Error(`Expected variable name after 'let', found '${nameToken.type}'`);
+        throw new Error(`Expected variable name after '${token.value}', found '${nameToken.type}'`);
       }
       const name = nameToken.value;
 
@@ -105,11 +105,14 @@ function parse(tokens) {
         throw new Error(`Expected ';' after variable declaration, found '${semicolonToken.value}'`);
       }
 
+      const isMutable = token.value === "let";
+
       return {
         type: "VariableDeclaration",
         name: name,
         datatype: datatype,
         value: value,
+        isMutable: isMutable
       };
     }
 

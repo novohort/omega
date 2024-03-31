@@ -1,4 +1,5 @@
 fn main(): void {
   out("Hello, world!");
-  let my_var: int { 5 };
+  let my_var_int: int { 5 };
+  const my_const_int: int { 10 };
 }

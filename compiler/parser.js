@@ -65,7 +65,55 @@ function parse(tokens) {
       };
     }
 
-    throw new TypeError("I don't know what this token is: " + token.type);
+    if (token.type === "keyword" && token.value === "let") {
+      current++;
+      const nameToken = tokens[current++];
+      if (nameToken.type !== "identifier") {
+        throw new Error(`Expected variable name after 'let', found '${nameToken.type}'`);
+      }
+      const name = nameToken.value;
+
+      const colonToken = tokens[current++];
+      if (colonToken.value !== ":") {
+        throw new Error(`Expected ':' after variable name '${name}', found '${colonToken.value}'`);
+      }
+
+      const typeToken = tokens[current++];
+      if (typeToken.type !== "keyword" || (typeToken.value !== "int" && typeToken.value !== "uint")) {
+        throw new Error(`Expected 'int' or 'uint' for variable type, found '${typeToken.value}'`);
+      }
+      const datatype = typeToken.value;
+
+      const openBraceToken = tokens[current++];
+      if (openBraceToken.value !== "{") {
+        throw new Error(`Expected '{' before variable initialization, found '${openBraceToken.value}'`);
+      }
+
+      const valueToken = tokens[current++];
+      if (valueToken.type !== "number") {
+        throw new Error(`Expected number for variable initialization, found '${valueToken.type}'`);
+      }
+      const value = valueToken.value;
+
+      const closeBraceToken = tokens[current++];
+      if (closeBraceToken.value !== "}") {
+        throw new Error(`Expected '}' after variable initialization, found '${closeBraceToken.value}'`);
+      }
+
+      const semicolonToken = tokens[current++];
+      if (semicolonToken.value !== ";") {
+        throw new Error(`Expected ';' after variable declaration, found '${semicolonToken.value}'`);
+      }
+
+      return {
+        type: "VariableDeclaration",
+        name: name,
+        datatype: datatype,
+        value: value,
+      };
+    }
+
+    throw new TypeError(`I don't know what this token is: ${token.type} | ${token.value}`);
   }
 
   let ast = {

@@ -1,16 +1,26 @@
-const fs = require('fs');
-const { exec } = require('child_process');
-const tokenize = require('./tokenizer');
-const parse = require('./parser');
-const codegen = require('./codegen');
-
-const omegaFilename = "hello_world.o";
+const fs = require("fs");
+const { exec } = require("child_process");
+const tokenize = require("./tokenizer");
+const parse = require("./parser");
+const codegen = require("./codegen");
 const rustFilename = "hello_world.rs";
-const executableName = "hello_world.exe";
+const omega_input_filepattern = /^.*\.o$/i;
+const omega_output_file = process.argv[3];
+const omega_input_filename = process.argv[2];
 
-fs.readFile(omegaFilename, "utf8", (err, data) => {
+if (!omega_input_filepattern.test(omega_input_filename)) {
+  console.error("Omega input filename unrecognized");
+  return;
+}
+
+if (!omega_output_file) {
+  console.error("Omega output filename unrecognized");
+  return;
+}
+
+fs.readFile(omega_input_filename, "utf8", (err, data) => {
   if (err) {
-    console.error(`Error reading file ${omegaFilename}: ${err}`);
+    console.error(`Error reading file ${omega_input_filename}: ${err}`);
     return;
   }
 
@@ -25,28 +35,30 @@ fs.readFile(omegaFilename, "utf8", (err, data) => {
         return;
       }
 
-      exec(`rustc ${rustFilename} -o ${executableName}`, (err, stdout, stderr) => {
-        if (err) {
-          console.error(`Compilation error: ${err}`);
-          return;
-        }
-        if (stderr) {
-          console.error(`Compiler stderr: ${stderr}`);
-          return;
-        }
-        
-        fs.unlink(rustFilename, (err) => {
-          if (err) console.error(`Error deleting Rust source file: ${err}`);
-          else console.log(`${rustFilename} deleted successfully.`);
-        });
-        
-        const pdbFilename = executableName.replace('.exe', '.pdb');
-        fs.unlink(pdbFilename, (err) => {
-          if (!err) console.log(`${pdbFilename} deleted successfully.`);
-        });
+      exec(
+        `rustc ${rustFilename} -o ${omega_output_file}`,
+        (err, stdout, stderr) => {
+          if (err) {
+            console.error(`Compilation error: ${err}`);
+            return;
+          }
+          if (stderr) {
+            console.error(`Compiler stderr: ${stderr}`);
+            return;
+          }
 
-        console.log(`Compiled successfully to ${executableName}`);
-      });
+          fs.unlink(rustFilename, (err) => {
+            if (err) console.error(`Error deleting Rust source file: ${err}`);
+          });
+
+          const pdbFilename = omega_output_file.replace(".exe", ".pdb");
+          fs.unlink(pdbFilename, (err) => {
+            if (!err) console.log(`${pdbFilename} deleted successfully.`);
+          });
+
+          console.log(`Compiled successfully to ${omega_output_file}`);
+        }
+      );
     });
   } catch (error) {
     console.error(error);

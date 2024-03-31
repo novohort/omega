@@ -26,6 +26,8 @@ fs.readFile(omega_input_filename, "utf8", (err, data) => {
 
   try {
     const tokens = tokenize(data);
+    // console.log(tokens);
+    // return;
     const ast = parse(tokens);
     const rustCode = codegen(ast);
 

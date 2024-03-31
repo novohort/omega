@@ -1,0 +1,4 @@
+fn main(): void {
+  out("Hello, world!");
+  let my_var: int { 5 };
+}

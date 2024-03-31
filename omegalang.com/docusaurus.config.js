@@ -101,7 +101,7 @@ const config = {
               },
               {
                 label: 'Language Reference',
-                to: '/docs/language-reference',
+                to: '/docs/category/language-reference',
               },
             ],
           },

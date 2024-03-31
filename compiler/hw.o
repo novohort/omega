@@ -2,4 +2,6 @@ fn main(): void {
   out("Hello, world!");
   let my_var_int: int { 5 };
   const my_const_int: int { 10 };
+  let my_var_uint: uint { 8 };
+  const my_const_uint: uint { 42 };
 }

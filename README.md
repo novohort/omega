@@ -14,7 +14,7 @@ Alpha, the Omega compiler, is written with JavaScript and utilizes rustc for the
 
 You'll need two things installed in order to work with Omega: Node, and rustc.
 
-At the current stage, the filename to be compiled is hardcoded in the Omega compiler, so you'll need to change the name in the code manually. When you're ready to compile, simply run `node alpha.js`, and Alpha will tokenize your Omega file, parse it, convert it to valid Rust code, and then compile it to an executable. Once that's done, Alpha automatically cleans up the leftover files that were generated during Rust's compilation step.
+When you're ready to compile, simply run `node alpha.js <omega_file.o> <output_program.exe>`, and Alpha will tokenize your Omega file, parse it, convert it to valid Rust code, and then compile it to an executable. Once that's done, Alpha automatically cleans up the leftover files that were generated during Rust's compilation step.
 
 ## A Brief Introduction
 

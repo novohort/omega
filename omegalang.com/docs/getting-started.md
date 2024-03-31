@@ -30,9 +30,9 @@ fn main(): void {
 To compile your Omega program, run:
 
 ```bash
-node alpha.js
+node alpha.js <omega_file.o> <output_program.exe>
 ```
 
 _Please note that at the time of writing, the name of the Omega file that's compiled is hardcoded in the compiler itself. If you'd like to change the file name, you'll need to modify the compiler._
 
-This will compile it into an executable named `hello_world.exe`. Run the executable to see "Hello, world!" printed to the console.
+This will compile it into an executable. Run the executable to see "Hello, world!" printed to the console.

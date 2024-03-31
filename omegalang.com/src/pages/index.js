@@ -24,7 +24,7 @@ function HomepageHeader() {
             Get Started - 5min ⏱️
           </Link>
         </div>
-        <p>Current version: v0.1.0</p>
+        <p>Current version: v0.2.0</p>
       </div>
     </header>
   );

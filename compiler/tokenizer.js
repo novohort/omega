@@ -4,8 +4,9 @@ function tokenize(code) {
   const tokens = [];
   const tokenSpecs = [
     { type: "string", pattern: /"([^"\\]|\\.)*"/y },
-    { type: "keyword", pattern: /\b(fn|void)\b/y },
+    { type: "keyword", pattern: /\b(fn|void|let|const|int|uint)\b/y },
     { type: "identifier", pattern: /\b[a-zA-Z_][a-zA-Z0-9_]*\b/y },
+    { type: "number", pattern: /\b\d+\b/y },
     { type: "symbol", pattern: /[{}();:]/y },
     { type: "whitespace", pattern: /\s+/y },
   ];

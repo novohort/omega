@@ -3,10 +3,10 @@ const { exec } = require("child_process");
 const tokenize = require("./tokenizer");
 const parse = require("./parser");
 const codegen = require("./codegen");
-const rustFilename = "hello_world.rs";
 const omega_input_filepattern = /^.*\.o$/i;
 const omega_output_file = process.argv[3];
 const omega_input_filename = process.argv[2];
+const rustFilename = `${omega_input_filename.substring(0, omega_input_filename.length - 2)}.rs`;
 
 if (!omega_input_filepattern.test(omega_input_filename)) {
   console.error("Omega input filename unrecognized");
@@ -26,8 +26,14 @@ fs.readFile(omega_input_filename, "utf8", (err, data) => {
 
   try {
     const tokens = tokenize(data);
+    // console.log(tokens);
+    // return;
     const ast = parse(tokens);
+    // console.log(JSON.stringify(ast, null, 2));
+    // return;
     const rustCode = codegen(ast);
+    // console.log(rustCode);
+    // return;
 
     fs.writeFile(rustFilename, rustCode, (err) => {
       if (err) {
@@ -36,7 +42,7 @@ fs.readFile(omega_input_filename, "utf8", (err, data) => {
       }
 
       exec(
-        `rustc ${rustFilename} -o ${omega_output_file}`,
+        `rustc ${rustFilename} -o ${omega_output_file} -A warnings`,
         (err, stdout, stderr) => {
           if (err) {
             console.error(`Compilation error: ${err}`);

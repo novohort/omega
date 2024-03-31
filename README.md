@@ -1,4 +1,6 @@
-# Welcome to Omega
+# The Omega Programming Language
+
+This is the main source code repository for Omega. It contains the compiler, standard library, and documentation.
 
 ## About Omega (and its compiler, Alpha)
 

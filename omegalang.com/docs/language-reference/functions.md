@@ -27,8 +27,8 @@ Since Omega is in its early development stages, it currently supports functions 
 Here is a simple example of a function in Omega:
 
 ```omega
-fn main(): void {
-  out("Hello, world!");
+fn main(): int {
+  return 1 + 5;
 }
 ```
 

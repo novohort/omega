@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Installation
 
-Currently, Omega compiles to Rust, so you'll need to have rustc installed on your machine. The compiler is built in JavaScript, so you're also going to need Node. Please refer to the [Rust installation guide](https://www.rust-lang.org/tools/install) and the [Node installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for instructions.
+Currently, Omega is interpreted via a REPL built in Go, so you'll need to have Go installed on your machine. Please refer to the [Go download directory](https://go.dev/dl/).
 
 After everything is installed, you can clone the Omega repository from GitHub:
 
@@ -17,20 +17,14 @@ cd omega
 
 ## Your First Omega Program
 
-To get started with Omega, let's write a simple program that prints "Hello, world!" to the console.
-
-Create a file named `hello_world.o` and add the following Omega code:
-
-```omega
-fn main(): void {
-  out("Hello, world!");
-}
-```
-
-To compile your Omega program, run:
+To get started with Omega, ensure you're inside the interpreter directory.
 
 ```bash
-node alpha.js <omega_file.o> <output_program.exe>
+cd interpreter
 ```
 
-This will compile it into an executable. Run the executable to see "Hello, world!" printed to the console.
+Once there, simply run the following command to launch the REPL:
+
+```bash
+go run alpha.go
+```

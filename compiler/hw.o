@@ -1,4 +1,8 @@
-fn main(): void {
-  out("Hello, world!");
-  let my_var_int: int { 5 };
-}
+let five: int { 5 };
+let ten: int { 10 };
+
+fn add(x, y): int {
+  return x + y;
+};
+
+let result: int { add(five, ten); }

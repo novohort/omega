@@ -1,6 +1,6 @@
 package lexer
 
-import "interpreter/token"
+import "alpha/token"
 
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token

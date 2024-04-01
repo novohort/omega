@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"interpreter/repl"
+	"alpha/repl"
 )
 
 func main() {

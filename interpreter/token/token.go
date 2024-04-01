@@ -38,9 +38,15 @@ const (
 	// types
 	INT		= "INT"
 
+	// comparisons
+	IEQ	= "=="
+	NEQ = "!="
+	LEQ = "<="
+	GEQ = ">="
+
 	// operators
 	PLUS 			= "+"
-	EQUAL 		= "="
+	ASSIGN 		= "="
 	MINUS 		= "-"
 	BANG			= "!"
 	ASTERISK	= "*"

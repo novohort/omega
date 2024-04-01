@@ -35,7 +35,14 @@ const (
 	INT		= "INT"
 
 	// operators
-	PLUS = "+"
+	PLUS 			= "+"
+	EQUAL 		= "="
+	MINUS 		= "-"
+	BANG			= "!"
+	ASTERISK	= "*"
+	FSLASH		= "/"
+	LT				= "<"
+	GT				= ">"
 
 	// delimiters
 	SEMICOLON = ";"

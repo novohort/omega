@@ -15,19 +15,65 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-	input := `;,(){}:`
+	input := `let five: int { 5 };
+	let ten: int { 10 };
+	
+	fn add(x, y): int {
+		return x + y;
+	};
+	
+	let result: int { add(five, ten); }`
 
 	tests := []struct {
 		expectedType token.TokenType
 		expectedLiteral string
 	}{
-		{token.SEMICOLON, ";"},
-		{token.COMMA, ","},
-		{token.LPAREN, "("},
-		{token.RPAREN, ")"},
-		{token.LBRACE, "{"},
-		{token.RBRACE, "}"},
+		{token.LET, "let"},
+		{token.IDENT, "five"},
 		{token.COLON, ":"},
+		{token.INT, "int"},
+		{token.LBRACE, "{"},
+		{token.INTEGER, "5"},
+		{token.RBRACE, "}"},
+		{token.SEMICOLON, ";"},
+		{token.LET, "let"},
+		{token.IDENT, "ten"},
+		{token.COLON, ":"},
+		{token.INT, "int"},
+		{token.LBRACE, "{"},
+		{token.INTEGER, "10"},
+		{token.RBRACE, "}"},
+		{token.SEMICOLON, ";"},
+		{token.FUNCTION, "fn"},
+		{token.IDENT, "add"},
+		{token.LPAREN, "("},
+		{token.IDENT, "x"},
+		{token.COMMA, ","},
+		{token.IDENT, "y"},
+		{token.RPAREN, ")"},
+		{token.COLON, ":"},
+		{token.INT, "int"},
+		{token.LBRACE, "{"},
+		{token.RETURN, "return"},
+		{token.IDENT, "x"},
+		{token.PLUS, "+"},
+		{token.IDENT, "y"},
+		{token.SEMICOLON, ";"},
+		{token.RBRACE, "}"},
+		{token.SEMICOLON, ";"},
+		{token.LET, "let"},
+		{token.IDENT, "result"},
+		{token.COLON, ":"},
+		{token.INT, "int"},
+		{token.LBRACE, "{"},
+		{token.IDENT, "add"},
+		{token.LPAREN, "("},
+		{token.IDENT, "five"},
+		{token.COMMA, ","},
+		{token.IDENT, "ten"},
+		{token.RPAREN, ")"},
+		{token.SEMICOLON, ";"},
+		{token.RBRACE, "}"},
 		{token.EOF, ""},
 	}
 

@@ -14,7 +14,10 @@ const (
 
 	// identifiers and literals
 	IDENT = "IDENT" // add, foobar, x, y, etc
-	INT		= "INT"		// 8675309
+	INTEGER		= "INTEGER"		// 8675309
+
+	// types
+	INT		= "INT"
 
 	// operators
 	PLUS = "+"

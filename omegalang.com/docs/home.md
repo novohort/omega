@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Welcome to the Omega programming language!
 
-Omega is a new, compiled language designed with simplicity and power in mind, and is self-described as The General Purpose Programming Language.
+Omega is a new language designed with simplicity and power in mind, and is self-described as The General Purpose Programming Language.
 
 Our goal is to provide a language that is easy to learn and use, while also being capable of performing just about any task necesssary, no matter the complexity.
 

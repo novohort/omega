@@ -1,10 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Variables
-
-## Overview
 
 Omega supports variables as a fundamental aspect of the language, allowing you to store and manipulate data. Variables in Omega are typed, ensuring that operations on these variables are safe and predictable.
 
@@ -28,11 +26,9 @@ const variable_name: type { value };
 
 ### Types
 
-Currently, Omega supports two basic types for variables:
+Currently, Omega supports one basic type for variables:
 
 - `int`: A signed integer.
-- `uint`: An unsigned integer.
-
 
 ### Examples
 

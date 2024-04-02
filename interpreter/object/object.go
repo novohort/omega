@@ -91,6 +91,8 @@ func (f *Function) Inspect() string {
 	return out.String()
 }
 
+type BuiltinFunction func(args ...Object) Object
+
 func (s *String) Type() ObjectType { return STRING_OBJ }
 func (s *String) Inspect() string { return s.Value }
 

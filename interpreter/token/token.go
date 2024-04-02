@@ -28,10 +28,11 @@ func LookupIdent(ident string) TokenType {
 const (
 	ILLEGAL = "ILLEGAL"
 	EOF			= "EOF"
+	IDENT = "IDENT"
 
-	// identifiers and literals
-	IDENT = "IDENT" // add, foobar, x, y, etc
+	// data types
 	INTEGER		= "INTEGER"		// 8675309
+	STRING		= "STRING"		// "zaphod beeblebrox"
 
 	// comparisons
 	IEQ	= "=="

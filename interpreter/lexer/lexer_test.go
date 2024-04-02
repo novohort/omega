@@ -28,7 +28,10 @@ func TestNextToken(t *testing.T) {
 	if else;
 	true false;
 	== !=;
-	<= >=;`
+	<= >=;
+	"foobar"
+	"foo bar"
+	`
 
 	tests := []struct {
 		expectedType token.TokenType
@@ -101,6 +104,8 @@ func TestNextToken(t *testing.T) {
 		{token.LEQ, "<="},
 		{token.GEQ, ">="},
 		{token.SEMICOLON, ";"},
+		{token.STRING, "foobar"},
+		{token.STRING, "foo bar"},
 		{token.EOF, ""},
 	}
 

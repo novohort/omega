@@ -16,7 +16,6 @@ However, Omega simplifies the syntax and reduces complexity, making it more acce
 
 ## Features at a Glance
 
-- __Statically Typed:__ Every variable and expression type is known at compile time, reducing runtime errors and increasing code reliability.
 - __Simplified Syntax:__ Borrowing from Rust's expressive syntax, Omega aims to maintain clarity and conciseness, making it easier to read and write code.
 - __Beginner-Friendly:__ With a focus on simplicity and an intuitive syntax, Omega is designed to be approachable for newcomers.
 - __Function-Centric:__ Functions are a core construct in Omega, facilitating modular and reusable code.

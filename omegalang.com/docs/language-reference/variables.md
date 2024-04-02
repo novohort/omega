@@ -1,45 +1,31 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Variables
 
-Omega supports variables as a fundamental aspect of the language, allowing you to store and manipulate data. Variables in Omega are typed, ensuring that operations on these variables are safe and predictable.
+Omega supports variables as a fundamental aspect of the language, allowing you to store and manipulate data.
 
 ## Variable Initialization
 
-In Omega, you initialize variables using the `let` and `const` keywords. The `let` keyword is used for mutable variables, whereas `const` is used for immutable variables.
+In Omega, you initialize variables using the `let` keyword.
 
 ### Syntax
 
-Mutable variable initialization:
+Variable initialization:
 
 ```omega
-let variable_name: type { value };
+let variable_name { value };
 ```
 
-Immutable variable initialization:
+### Data Types
 
-```omega
-const variable_name: type { value };
-```
-
-### Types
-
-Currently, Omega supports one basic type for variables:
-
-- `int`: A signed integer.
+Currently, Omega supports one basic datatype: integers.
 
 ### Examples
 
-Declaring a mutable integer variable with an initial value:
+Declaring an integer variable with an initial value:
 
 ```omega
-let my_var: int { 5 };
-```
-
-Declaring an immutable unsigned integer variable with an initial value:
-
-```omega
-const my_const: uint { 10 };
+let my_var { 5 };
 ```

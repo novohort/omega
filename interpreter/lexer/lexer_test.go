@@ -15,20 +15,23 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-	input := `let five: int { 5 };
-	let ten: int { 10 };
+	input := `let five: { 5 };
+	let ten: { 10 };
 	
-	fn add(x, y): int {
+	fn add(x, y): {
 		return x + y;
 	};
 	
-	let result: int { add(five, ten); };
+	let result: { add(five, ten); };
 	!-/*5;
 	5 < 10 > 5;
 	if else;
-	const true false;
+	true false;
 	== !=;
-	<= >=;`
+	<= >=;
+	"foobar"
+	"foo bar"
+	`
 
 	tests := []struct {
 		expectedType token.TokenType
@@ -37,7 +40,6 @@ func TestNextToken(t *testing.T) {
 		{token.LET, "let"},
 		{token.IDENT, "five"},
 		{token.COLON, ":"},
-		{token.INT, "int"},
 		{token.LBRACE, "{"},
 		{token.INTEGER, "5"},
 		{token.RBRACE, "}"},
@@ -45,7 +47,6 @@ func TestNextToken(t *testing.T) {
 		{token.LET, "let"},
 		{token.IDENT, "ten"},
 		{token.COLON, ":"},
-		{token.INT, "int"},
 		{token.LBRACE, "{"},
 		{token.INTEGER, "10"},
 		{token.RBRACE, "}"},
@@ -58,7 +59,6 @@ func TestNextToken(t *testing.T) {
 		{token.IDENT, "y"},
 		{token.RPAREN, ")"},
 		{token.COLON, ":"},
-		{token.INT, "int"},
 		{token.LBRACE, "{"},
 		{token.RETURN, "return"},
 		{token.IDENT, "x"},
@@ -70,7 +70,6 @@ func TestNextToken(t *testing.T) {
 		{token.LET, "let"},
 		{token.IDENT, "result"},
 		{token.COLON, ":"},
-		{token.INT, "int"},
 		{token.LBRACE, "{"},
 		{token.IDENT, "add"},
 		{token.LPAREN, "("},
@@ -96,7 +95,6 @@ func TestNextToken(t *testing.T) {
 		{token.IF, "if"},
 		{token.ELSE, "else"},
 		{token.SEMICOLON, ";"},
-		{token.CONST, "const"},
 		{token.TRUE, "true"},
 		{token.FALSE, "false"},
 		{token.SEMICOLON, ";"},
@@ -106,6 +104,8 @@ func TestNextToken(t *testing.T) {
 		{token.LEQ, "<="},
 		{token.GEQ, ">="},
 		{token.SEMICOLON, ";"},
+		{token.STRING, "foobar"},
+		{token.STRING, "foo bar"},
 		{token.EOF, ""},
 	}
 

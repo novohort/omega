@@ -17,7 +17,12 @@ const (
 	ERROR_OBJ					= "ERROR"
 	FUNCTION_OBJ			= "FUNCTION"
 	STRING_OBJ				= "STRING"
+	BUILTIN_OBJ				= "BUILTIN"
 )
+
+type Builtin struct {
+	Fn BuiltinFunction
+}
 
 type String struct {
 	Value string
@@ -65,7 +70,7 @@ func (rv *ReturnValue) Type() ObjectType { return RETURN_VALUE_OBJ }
 func (rv *ReturnValue) Inspect() string { return rv.Value.Inspect() }
 
 func (e *Error) Type() ObjectType { return ERROR_OBJ }
-func (e *Error) Inspect() string { return "ERROR: " + e.Message }
+func (e *Error) Inspect() string { return "SKILL ISSUE: " + e.Message }
 
 func (f *Function) Type() ObjectType { return FUNCTION_OBJ }
 func (f *Function) Inspect() string {
@@ -86,5 +91,10 @@ func (f *Function) Inspect() string {
 	return out.String()
 }
 
+type BuiltinFunction func(args ...Object) Object
+
 func (s *String) Type() ObjectType { return STRING_OBJ }
 func (s *String) Inspect() string { return s.Value }
+
+func (b *Builtin) Type() ObjectType { return BUILTIN_OBJ }
+func (b *Builtin) Inspect() string { return "builtin function" }

@@ -1,4 +1,0 @@
-fn main(): void {
-  out("Hello, world!");
-  let my_var_int: int { 5 };
-}

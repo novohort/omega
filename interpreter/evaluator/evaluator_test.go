@@ -27,7 +27,7 @@ func TestBuiltinFunctions(t *testing.T) {
 		case string:
 			errObj, ok := evaluated.(*object.Error)
 			if !ok {
-				t.Errorf("object is not Error. got=%T (%+v)", evaluted, evaluated)
+				t.Errorf("object is not Error. got=%T (%+v)", evaluated, evaluated)
 				continue
 			}
 			if errObj.Message != expected {

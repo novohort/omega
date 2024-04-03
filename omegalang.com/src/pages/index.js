@@ -19,12 +19,12 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/getting-started"
+            to="https://github.com/novohort/omega/releases"
           >
-            Get Started - 5min ⏱️
+            Download Alpha - The Omega Interpreter 💻
           </Link>
         </div>
-        <p>Current version: v0.4.0</p>
+        <p>Current version: v0.5.0</p>
       </div>
     </header>
   );

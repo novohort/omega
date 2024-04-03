@@ -21,7 +21,12 @@ const (
 	BUILTIN_OBJ				= "BUILTIN"
 	ARRAY_OBJ					=	"ARRAY"
 	HASH_OBJ					= "HASH"
+	QUOTE_OBJ					= "QUOTE"
 )
+
+type Quote struct {
+	Node ast.Node
+}
 
 type Array struct {
 	Elements []Object
@@ -179,4 +184,9 @@ func (h *Hash) Inspect() string {
 	out.WriteString("}")
 
 	return out.String()
+}
+
+func (q *Quote) Type() ObjectType { return QUOTE_OBJ }
+func (q *Quote) Inspect() string {
+	return "QUOTE(" + q.Node.String() + ")"
 }

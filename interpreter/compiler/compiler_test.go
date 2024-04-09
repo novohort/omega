@@ -9,6 +9,16 @@ import (
 	"fmt"
 )
 
+func concatInstructions(s []code.Instructions) code.Instructions {
+	out := code.Instructions{}
+
+	for _, ins := range s {
+		out = append(out, ins...)
+	}
+
+	return out
+}
+
 func testInstructions(
 	expected []code.Instructions,
 	actual code.Instructions,

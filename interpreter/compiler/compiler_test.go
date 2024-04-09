@@ -1,9 +1,18 @@
 package compiler
 
 import (
+	"interpreter/ast"
 	"interpreter/code"
+	"interpreter/lexer"
+	"interpreter/parser"
 	"testing"
 )
+
+func parse(input string) *ast.Program {
+	l := lexer.New(input)
+	p := parser.New(l)
+	return p.ParseProgram()
+}
 
 type compilerTestCase struct {
 	input string
